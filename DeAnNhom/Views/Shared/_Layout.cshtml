@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="black">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title</title>
+
+    <script src="https://kit.fontawesome.com/34bc6c9717.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css/base.css")
+</head>
+
+<body class="min-h-screen w-screen overflow-x-hidden !bg-gray-100">
+    @Html.Partial("Components/Navbar")
+
+    <main class="pt-28 pb-5">
+        @RenderBody()
+    </main>
+
+    @Html.Partial("Components/Footer")
+</body>
+</html>

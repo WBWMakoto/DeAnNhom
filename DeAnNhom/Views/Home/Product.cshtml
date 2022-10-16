@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DeAnNhom.Models.Product>
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="">
+        @item.ProductName
+    </div>
+}
