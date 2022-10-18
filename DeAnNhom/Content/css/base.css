@@ -2048,6 +2048,18 @@ html {
         display: flex;
     }
 
+.btm-nav > *.disabled,
+.btm-nav > *.disabled:hover,
+.btm-nav > *[disabled],
+.btm-nav > *[disabled]:hover {
+    pointer-events: none;
+    --tw-border-opacity: 0;
+    background-color: hsl(var(--n) / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.1;
+    color: hsl(var(--bc) / var(--tw-text-opacity));
+    --tw-text-opacity: 0.2;
+}
+
 .btm-nav > * .label {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -2598,6 +2610,10 @@ html {
     left: 0px;
 }
 
+.right-5 {
+    right: 1.25rem;
+}
+
 .z-50 {
     z-index: 50;
 }
@@ -2648,6 +2664,18 @@ html {
     height: 50%;
 }
 
+.h-20 {
+    height: 5rem;
+}
+
+.h-\[600px\] {
+    height: 600px;
+}
+
+.h-\[25rem\] {
+    height: 25rem;
+}
+
 .min-h-screen {
     min-height: 100vh;
 }
@@ -2688,12 +2716,28 @@ html {
     width: 24rem;
 }
 
+.w-\[25rem\] {
+    width: 25rem;
+}
+
 .min-w-\[853\.333px\] {
     min-width: 853.333px;
 }
 
 .max-w-screen-xl {
     max-width: 1280px;
+}
+
+.max-w-screen-lg {
+    max-width: 1024px;
+}
+
+.flex-\[0_1_auto\] {
+    flex: 0 1 auto;
+}
+
+.flex-\[1_1_auto\] {
+    flex: 1 1 auto;
 }
 
 .transform {
@@ -2720,8 +2764,16 @@ html {
     align-items: flex-start;
 }
 
+.items-end {
+    align-items: flex-end;
+}
+
 .items-center {
     align-items: center;
+}
+
+.justify-end {
+    justify-content: flex-end;
 }
 
 .justify-center {
@@ -2742,6 +2794,10 @@ html {
 
 .gap-3 {
     gap: 0.75rem;
+}
+
+.gap-7 {
+    gap: 1.75rem;
 }
 
 .overflow-hidden {
@@ -2794,6 +2850,10 @@ html {
     border-bottom-width: 4px;
 }
 
+.border-t-\[1px\] {
+    border-top-width: 1px;
+}
+
 .border-gray-300\/60 {
     border-color: rgb(209 213 219 / 0.6);
 }
@@ -2810,6 +2870,19 @@ html {
 .border-\[\#fe6132\] {
     --tw-border-opacity: 1;
     border-color: rgb(254 97 50 / var(--tw-border-opacity));
+}
+
+.border-gray-400\/60 {
+    border-color: rgb(156 163 175 / 0.6);
+}
+
+.border-gray-500 {
+    --tw-border-opacity: 1;
+    border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.border-opacity-40 {
+    --tw-border-opacity: 0.4;
 }
 
 .\!bg-gray-100 {
@@ -2829,6 +2902,11 @@ html {
 
 .bg-gray-700\/60 {
     background-color: rgb(55 65 81 / 0.6);
+}
+
+.bg-\[\#ee4d2d\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(238 77 45 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -2859,6 +2937,10 @@ html {
 
 .p-10 {
     padding: 2.5rem;
+}
+
+.p-5 {
+    padding: 1.25rem;
 }
 
 .py-2 {
@@ -2906,6 +2988,11 @@ html {
     padding-right: 0.5rem;
 }
 
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .pl-2 {
     padding-left: 0.5rem;
 }
@@ -2950,6 +3037,20 @@ html {
     line-height: 1.75rem;
 }
 
+.text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
 .text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -2969,8 +3070,21 @@ html {
     color: rgb(107 114 128 / 0.6);
 }
 
+.text-\[\#ee4d2d\] {
+    --tw-text-opacity: 1;
+    color: rgb(238 77 45 / var(--tw-text-opacity));
+}
+
+.text-gray-400\/60 {
+    color: rgb(156 163 175 / 0.6);
+}
+
 .opacity-50 {
     opacity: 0.5;
+}
+
+.opacity-40 {
+    opacity: 0.4;
 }
 
 .shadow {
@@ -3017,6 +3131,26 @@ html {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.placeholder\:text-sm::-moz-placeholder {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.placeholder\:text-sm::placeholder {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.placeholder\:text-gray-600::-moz-placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-gray-600::placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .focus-within\:border-black:focus-within {
     --tw-border-opacity: 1;
     border-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -3034,6 +3168,15 @@ html {
 .focus\:outline-none:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
+}
+
+.disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+}
+
+.disabled\:bg-\[\#f4836c\]:disabled {
+    --tw-bg-opacity: 1;
+    background-color: rgb(244 131 108 / var(--tw-bg-opacity));
 }
 
 .group:hover .group-hover\:-rotate-180 {

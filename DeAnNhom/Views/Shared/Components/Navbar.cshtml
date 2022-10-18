@@ -43,8 +43,8 @@
 
                     <li>
                         <div class="flex gap-2">
-                            <a href="#">Đăng Kí</a>
-                            <a class="border-l-[1px] border-gray-300/60 pl-2" href="#">Đăng Nhập</a>
+                            @Html.ActionLink("Đăng Kí", "Register", "Account")
+                            @Html.ActionLink("Đăng Nhập", "Login", "Account", null, new { @class = "border-l-[1px] border-gray-300/60 pl-2" })
                         </div>
                     </li>
                 </ul>

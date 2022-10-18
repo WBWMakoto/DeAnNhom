@@ -71,33 +71,36 @@
     </div>
 </section>
 
-<script>
-    let currentAdsIndex = 0;
-    let i = setInterval(() => next(), 2000);
+@section script
+{
+    <script>
+        let currentAdsIndex = 0;
+        let i = setInterval(() => next(), 2000);
 
-    const resetInterval = () => {
-        clearInterval(i);
+        const resetInterval = () => {
+            clearInterval(i);
 
-        i = setInterval(() => next(), 2000);
-    };
+            i = setInterval(() => next(), 2000);
+        };
 
-    const next = () => {
-        const AdsList = document.querySelector("div#carousel-ads ul");
+        const next = () => {
+            const AdsList = document.querySelector("div#carousel-ads ul");
 
-        currentAdsIndex = currentAdsIndex + 1 === AdsList.children.length ? 0 : currentAdsIndex + 1;
+            currentAdsIndex = currentAdsIndex + 1 === AdsList.children.length ? 0 : currentAdsIndex + 1;
 
-        AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
+            AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
 
-        resetInterval();
-    };
+            resetInterval();
+        };
 
-    const previous = () => {
-        const AdsList = document.querySelector("div#carousel-ads ul");
+        const previous = () => {
+            const AdsList = document.querySelector("div#carousel-ads ul");
 
-        currentAdsIndex = currentAdsIndex - 1 < 0 ? AdsList.children.length - 1 : currentAdsIndex - 1;
+            currentAdsIndex = currentAdsIndex - 1 < 0 ? AdsList.children.length - 1 : currentAdsIndex - 1;
 
-        AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
+            AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
 
-        resetInterval();
-    };
-</script>
+            resetInterval();
+        };
+    </script>
+}

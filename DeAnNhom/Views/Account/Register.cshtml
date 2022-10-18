@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/Layout/_AccountLayout.cshtml";
+}
+
+<section class="flex flex-col gap-7">
+    <input id="phone-input"
+           type="text"
+           autocomplete="tel"
+           class="w-full rounded-md border border-gray-400/60 py-2 px-4 placeholder:text-sm placeholder:text-gray-600 focus:outline-none"
+           placeholder="Phone number" />
+
+    <button type="submit"
+            class="w-full rounded-md bg-[#ee4d2d] py-2 text-white disabled:cursor-not-allowed disabled:bg-[#f4836c]"
+            disabled>
+        Tiếp theo
+    </button>
+</section>
+
+<section class="flex items-center gap-5 text-xs text-gray-500/60">
+    <div class="w-full border-t-[1px] border-gray-500 opacity-40"></div>
+    <span>HOẶC</span>
+    <div class="w-full border-t-[1px] border-gray-500 opacity-40"></div>
+</section>
+
+<section class="flex items-center gap-5 text-sm">
+    <button type="button" class="w-full border border-gray-500 border-opacity-40 py-2">Facebook</button>
+    <button type="button" class="w-full border border-gray-500 border-opacity-40 py-2">Google</button>
+</section>
+
+<section class="text-center text-sm">
+    Bằng việc đăng kí, bạn đã đồng ý với Shopee về <br />
+    <a class="text-[#ee4d2d]" href="#">Điều khoản dịch vụ</a>
+    &
+    <a class="text-[#ee4d2d]" href="#">Chính sách bảo mật</a>
+</section>
+
+<section class="text-center text-sm text-gray-400/60">
+    Bạn đã có tài khoản? @Html.ActionLink("Đăng nhập", "Login", "Account", null, new { @class = "text-[#ee4d2d]" })
+</section>

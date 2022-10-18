@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/Layout/_AccountLayout.cshtml";
+}
+
+<section class="flex flex-col gap-7">
+    <input type="text"
+           autocomplete="on"
+           class="w-full rounded-md border border-gray-400/60 py-2 px-4 placeholder:text-sm placeholder:text-gray-600 focus:outline-none"
+           placeholder="Email/Số điện thoại/Tên đăng nhập" />
+
+    <div class="flex w-full rounded-md border border-gray-400/60 py-2 px-4">
+        <input id="password"
+               type="password"
+               autocomplete="on"
+               class="w-full placeholder:text-sm placeholder:text-gray-600 focus:outline-none"
+               placeholder="Mật Khẩu" />
+        <button type="button" id="show-pass" onclick="togglePass()">
+            <i class="fa-regular fa-eye"></i>
+        </button>
+    </div>
+
+    <button type="submit"
+            class="w-full rounded-md bg-[#ee4d2d] py-2 text-white disabled:cursor-not-allowed disabled:bg-[#f4836c]"
+            disabled>
+        Đăng Nhập
+    </button>
+</section>
+
+<section class="flex items-center gap-5 text-xs text-gray-500/60">
+    <div class="w-full border-t-[1px] border-gray-500 opacity-40"></div>
+    <span>HOẶC</span>
+    <div class="w-full border-t-[1px] border-gray-500 opacity-40"></div>
+</section>
+
+<section class="flex items-center gap-3 text-sm">
+    <button type="button" class="w-full border border-gray-500 border-opacity-40 py-2">Facebook</button>
+    <button type="button" class="w-full border border-gray-500 border-opacity-40 py-2">Google</button>
+    <button type="button" class="w-full border border-gray-500 border-opacity-40 py-2">Apple</button>
+</section>
+
+<section class="text-center text-sm text-gray-400/60">
+    Bạn mới biết đến Shopee?  @Html.ActionLink("Đăng ký", "Register", "Account", null, new { @class = "text-[#ee4d2d]" })
+</section>
+
+@section script {
+    <script>
+        const togglePass = () => {
+            const showbtn = document.querySelector("button#show-pass");
+            const input = document.querySelector("input#password");
+
+            if (showbtn.children[0].classList[1] == "fa-eye") {
+                showbtn.children[0].className = "fa-regular fa-eye-slash";
+                input.type = "text";
+            } else {
+                showbtn.children[0].className = "fa-regular fa-eye";
+                input.type = "password";
+            }
+        };
+    </script>
+} 
