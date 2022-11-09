@@ -1,0 +1,120 @@
+﻿@using DeAnNhom.Models
+@using System.Globalization
+
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/Layout/_Layout.cshtml";
+
+    bool isEmpty = Model.Count() == 0;
+
+    string FormatPrice(decimal price)
+    {
+        return price.ToString("C0", CultureInfo.CreateSpecificCulture("VN-vn"));
+    }
+}
+
+<div class="max-w-screen-xl mx-auto flex flex-1 flex-col gap-5 py-3">
+    <section class="grid grid-cols-8 gap-4 bg-white shadow-md py-3 px-10 text-center text-gray-400 h-[60px] [&_span]:flex [&_span]:items-center [&_span]:justify-center" id="top">
+        <span class="col-span-4 text-black !justify-start"> Sản phẩm </span>
+        <span> Đơn giá</span>
+        <span class="col-span-2 flex justify-center"> Số lượng </span>
+        <span> Thao tác </span>
+    </section>
+
+    <section class="flex flex-col gap-y-5 bg-white shadow-md py-3 px-10 @(isEmpty ? "flex-1" : "flex-none")" id="showProduct">
+        @if (!isEmpty)
+        {
+            foreach (var item in Model)
+            {
+        <div class="grid grid-cols-8 gap-4 col-span-2">
+            <div class="col-span-4 flex justify-between">
+                <a href="@Url.Action("Details", "Product", new { name = item.ProductID })">
+                    <div class="text-left flex items-start gap-3">
+                        <img src="@Url.Content(item.ProductImage)" class="w-[80px] h-[80px] rounded-md" />
+                        <div class="h-max overflow-hidden text-sm w-[200px]"
+                             style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical">
+                            @item.ProductName
+                        </div>
+                    </div>
+                </a>
+                <div class="w-1/2 flex flex-wrap gap-2">
+                    @foreach (string size in item.Sizes.Split(';'))
+                            {
+                    <button class="min-w-[80px] h-max border-2 rounded-md border-gray-300 px-2 py-1 text-center sizeBtn" type="button">
+                        @size
+                    </button>
+                            }
+                </div>
+            </div>
+            <span class="flex items-center justify-center">
+                @FormatPrice(item.Price)
+            </span>
+
+            <span class="col-span-2 min-h-[50px] flex items-center justify-center">
+                Có @item.Quantity trong kho hàng
+            </span>
+
+            <div class="flex items-center gap-2">
+                <a href="@Url.Action("Edit", new { name = item.ProductID })" class="bg-[#ee4d2d] text-center rounded-md px-5 py-1 text-white">
+                    <i class="fa-solid fa-gears"></i> Sửa
+                </a>
+                <label for="my-modal-4" id="openModel" class="bg-[#ee4d2d] text-center rounded-md px-5 py-1 text-white triggerBtn" data-productID="@item.ProductID" data-productName="@item.ProductName">
+                    <i class="fa-solid fa-trash"></i> Xóa
+                </label>
+            </div>
+        </div>
+            }
+        }
+        else
+        {
+        <div class="col-span-8 flex-1 text-center flex flex-col items-center justify-center">
+            <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png"
+                 class="h-[150px] w-[150px] " loading="lazy" />
+            Bạn chưa có sản phẩm nào. <a href="@Url.Action("Create")" class="text-blue-600"> Tạo sản phẩm.</a>
+        </div>
+        }
+    </section>
+</div>
+
+@section model
+{
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+    <label for="my-modal-4" class="modal cursor-pointer">
+        <label class="modal-box relative" for="">
+            @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { @class = "text-center flex flex-col gap-5" }))
+            {
+            @Html.AntiForgeryToken()
+            <input value="" class="hidden" name="productID" id="productID" />
+            <h3 class="text-5xl text-red-600"> Cảnh báo </h3>
+            <p class="text-xl">
+                Bạn có chắc bạn muốn xóa sản phẩm <span id="productName">  </span>
+            </p>
+            <div class="w-full flex items-center justify-end">
+                <button type="submit" class="bg-red-600 text-white rounded-md py-2 px-5">
+                    Xóa
+                </button>
+            </div>
+            }
+        </label>
+    </label>
+}
+
+@section script
+{
+    <script>
+        const triggerBtn = $(".triggerBtn");
+
+        triggerBtn.on("click", (e) => {
+            const btn = e.target;
+            const productID = btn.getAttribute("data-productID");
+            const productName = btn.getAttribute("data-productName");
+
+            $("span#productName")[0].innerText = productName;
+            $("input#productID")[0].setAttribute("value", productID);
+        })
+    </script>
+
+}

@@ -1,73 +1,44 @@
-﻿@{
+﻿@using System.Globalization;
+@model IEnumerable<DeAnNhom.Models.Product>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<section id="ads-board" class="bg-white">
-    <div class="h-full min-h-max w-full shadow-lg">
-        <div class="m-auto flex h-max max-w-screen-xl items-start justify-between gap-2 py-6 px-1">
-            <div id="carousel-ads" class="group relative h-64 min-w-[853.333px] overflow-x-hidden rounded-sm">
-                <ul class="absolute top-0 left-0 flex w-max flex-nowrap items-center justify-center transition-transform duration-500 ease-in-out">
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/79ae313f6ea19c76c950640641f53c28_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/5b5de1582d99cbbe75a8f9a5c4dae1c2_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/9dc550aa378fa4c742dab3a10a26cd63_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/0df4a945ab6be69bd32c3680d6ca0a7c_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/0e5dcebf13a01268d6392a95c12f24a7_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/5944911139ec2d344a2b06c8228ff9ef_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/27eaf9c4e952c49edc85dc5a16efcffc_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/699f9b522db38d4c0438a4938c74918c_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/88c7a17e45993ef06c5fa7ad48a17fd3_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/fdb73aaf245e8d90a2b347e328ece278_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/ec74e6eda5a3c040eefd45e0cd770513_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/79ae313f6ea19c76c950640641f53c28_xxhdpi" /></li>
-                    <li><img class="h-64" src="https://cf.shopee.vn/file/5b5de1582d99cbbe75a8f9a5c4dae1c2_xxhdpi" /></li>
-                </ul>
+@Html.Action("Ads")
 
-                <div class="z-10 flex h-full w-full items-center justify-between">
-                    <button class="z-20 rounded-r-lg bg-gray-700/60 py-5 px-3 opacity-50 transition-opacity hover:opacity-90"
-                            onclick="previous()">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
+@Html.Action("Categories")
 
-                    <button class="z-20 rounded-l-lg bg-gray-700/60 py-5 px-3 opacity-50 transition-opacity hover:opacity-90"
-                            onclick="next()">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-            <aside id="solid-ads" class="flex h-64 flex-col items-center gap-2">
-                <img class="h-1/2 rounded-sm" src="https://cf.shopee.vn/file/69a642171c2ef532508d27e53568fe86_xhdpi" />
-                <img class="h-1/2 rounded-sm" src="https://cf.shopee.vn/file/b8faf04fc43e3d90f597ba73b06cfc0b_xhdpi" />
-            </aside>
-        </div>
-    </div>
-</section>
-
-<!-- <section id="catetories"></section> -->
-<section id="today-choice" class="m-auto h-max max-w-screen-xl pt-5 text-black">
+<section id="today-choice" class="m-auto w-full h-max max-w-screen-xl pt-5 text-black">
     <div class="w-full border-b-4 border-[#fe6132] bg-white py-3 text-center text-xl text-[#fe6132]">Gợi ý hôm nay</div>
 
-    <div class="grid grid-cols-6 gap-3 px-2 py-5">
-        @for (int i = 0; i < 54; i++)
+    <div class="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-3 gap-y-5 px-2 py-5">
+        @foreach (var item in Model)
         {
-        <div class="w-48 rounded-lg bg-white shadow-sm">
-            <img src="https://cf.shopee.vn/file/sg-11134201-22090-kknxp459lshv39_tn" />
-            <div class="flex flex-col gap-2 p-2">
-                <div class="h-max overflow-hidden text-sm"
-                     style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical">
-                    Áo Jacket Chui Đầu Unisex Form Rộng Cực Đẹp, Áo Khoác Dù Nam Nữ Cao Cấp [GAQ]
-                </div>
+            <div class="w-full flex items-center justify-center">
+                <div class="w-48 rounded-lg bg-white shadow-lg h-[284px] overflow-hidden hover:scale-105 transition-transform duration-300">
+                    <a class="h-full" href="@Url.Action("Details", "Product", new { name = item.ProductID })">
+                        <img src="@Url.Content(item.ProductImage)" class="w-full h-[192px]" loading="lazy" />
+                        <div class="flex flex-col justify-between h-[92px] gap-2 p-2">
+                            <div class="h-max overflow-hidden text-sm"
+                                 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical">
+                                @item.ProductName
+                            </div>
 
-                <div class="flex w-full items-center justify-between">
-                    <span class="text-lg text-[#fe6132]">đ103.000</span>
-                    <span class="text-sm text-gray-500/60">Đã bán 57</span>
+                            <div class="flex w-full items-center justify-between">
+                                <span class="text-lg text-[#fe6132]">@item.Price.ToString("C0", CultureInfo.CreateSpecificCulture("vn-vn"))</span>
+                                <span class="text-sm text-gray-500/60">Đã bán @item.Sold</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
+
         }
     </div>
 
     <div class="flex w-full items-center justify-center">
-        <button class="w-96 bg-white py-2 text-center shadow-md">Xem thêm</button>
+        <a class="w-96 bg-white py-2 text-center shadow-lg rounded-md hover:scale-105 transition-transform duration-300" href="@Url.Action("Index", "Product", new { page = 2 })">Xem thêm</a>
     </div>
 </section>
 
@@ -83,11 +54,14 @@
             i = setInterval(() => next(), 2000);
         };
 
+        //const getTranslateX = () => {
+        //    return document.documentElement.clientWidth <= 1280 ? $("div#carousel-ads").width() : 853.33;
+        //}
+
         const next = () => {
             const AdsList = document.querySelector("div#carousel-ads ul");
 
             currentAdsIndex = currentAdsIndex + 1 === AdsList.children.length ? 0 : currentAdsIndex + 1;
-
             AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
 
             resetInterval();
@@ -97,7 +71,6 @@
             const AdsList = document.querySelector("div#carousel-ads ul");
 
             currentAdsIndex = currentAdsIndex - 1 < 0 ? AdsList.children.length - 1 : currentAdsIndex - 1;
-
             AdsList.style = `transform: translateX(-${853.33 * currentAdsIndex}px) translateX(0px);`;
 
             resetInterval();

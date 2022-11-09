@@ -1,17 +1,29 @@
-﻿using System.Web.Mvc;
+using System.Web.Mvc;
 
 namespace DeAnNhom.Controllers
 {
     public class HomeController : Controller
     {
+        private DeAnNhomDatabaseEntities db = new DeAnNhomDatabaseEntities();
+
         public ActionResult Index()
         {
-            return View();
+            Random rnd = new Random();
+            var list = db.Products.OrderByDescending(p => p.Sold).Take(54).ToList();
+
+            return View(list.OrderBy(p => rnd.Next()));
         }
 
-        public ActionResult Product(int id)
+        public PartialViewResult Ads()
         {
-            return View();
+            return PartialView();
+        }
+
+        public PartialViewResult Categories()
+        {
+            var list = db.Categories.ToList();
+
+            return PartialView(list);
         }
     }
 }

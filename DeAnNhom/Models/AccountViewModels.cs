@@ -71,7 +71,7 @@ namespace DeAnNhom.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -149,5 +149,31 @@ namespace DeAnNhom.Models
         [Display(Name = "Tên Shop")]
         [MinLength(1, ErrorMessage = "Tên shop quá ngắn")]
         public string ShopName { get; set; }
+    }
+
+    public class UpdateInfoViewModel
+    {
+        [Display(Name = "New Email")]
+        [DataType(DataType.EmailAddress)]
+        public string NewEmail { get; set; }
+
+        [Display(Name = "New Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public string NewPhone { get; set; }
+
+        [Display(Name = "New Password")]
+        [DataType(DataType.Password)]
+        public string NewPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Current Password")]
+        [DataType(DataType.Password)]
+        public string CurrentPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("CurrentPassword", ErrorMessage = "The current password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
     }
 }
