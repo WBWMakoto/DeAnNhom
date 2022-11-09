@@ -73,8 +73,6 @@ hr {
     /* 3 */
 }
 
-
-
 /*
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
@@ -1903,13 +1901,10 @@ html {
     line-height: 1.25rem;
 }
 
-
-
-
     .footer > * {
         display: grid;
         place-items: start;
-        gap: 0.0rem; /*Orignal change here from 0.5 to 0.1*/
+        gap: 0.5rem;
     }
 
 @media (min-width: 48rem) {
@@ -1980,30 +1975,6 @@ html {
         -webkit-text-decoration-line: underline;
         text-decoration-line: underline;
     }
-
-.link1 {
-    cursor: pointer;
-    -webkit-text-decoration-line: underline;
-    text-decoration-line: underline;
-  
-    text-decoration: none;
-    color: rgba(0,0,0,.54);
-    display: inline-block;
-}
-
-.link-hover1 {
-    -webkit-text-decoration-line: none;
-    text-decoration-line: none;
-}
-
-    .link-hover1:hover {
-        -webkit-text-decoration-line: underline;
-        text-decoration-line: underline;
-    }
-
-
-
-
 
 .menu {
     display: flex;
@@ -2259,25 +2230,6 @@ html {
     text-transform: uppercase;
     opacity: 0.5;
 }
-
-
-.footer-title1 {
-   
-    font-weight: 700;
-    text-transform: uppercase;
-    opacity: 0.5;
-}
-
-.footer-column1 {
-    float: left;
-    
-    padding: 5px;
-}
-
-
-
-
-/* Clearfix (clear floats) */
 
 .label a:hover {
     --tw-text-opacity: 1;
@@ -2898,10 +2850,6 @@ html {
     border-bottom-width: 4px;
 }
 
-.border-t-4 {
-    border-top-width: 4px;
-}
-
 .border-t-\[1px\] {
     border-top-width: 1px;
 }
@@ -2947,12 +2895,6 @@ html {
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-
-.bg-grey12 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(230 60 17 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#fb5533\] {
     --tw-bg-opacity: 1;
     background-color: rgb(251 85 51 / var(--tw-bg-opacity));
@@ -2977,10 +2919,6 @@ html {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.indent69 {
-    padding-left: 1.7em
-}
-
 .to-\[\#fe6333\] {
     --tw-gradient-to: #fe6333;
 }
@@ -3000,7 +2938,6 @@ html {
 .p-10 {
     padding: 2.5rem;
 }
-
 
 .p-5 {
     padding: 1.25rem;
@@ -3054,13 +2991,6 @@ html {
 .px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
-}
-
-.pa-69 {
-    padding-left: 8.5rem;
-    padding-right: 8.5rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
 }
 
 .pl-2 {
@@ -3148,115 +3078,6 @@ html {
 .text-gray-400\/60 {
     color: rgb(156 163 175 / 0.6);
 }
-
-
-
-
-.pkg67p {
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-    .pkg67p:hover {
-        cursor: pointer;
-    }
-
-.ebQ6br {
-    height: 5rem;
-    width: 5rem;
-    margin-right: .75rem;
-    padding: .25rem;
-    background-color: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
-    border-radius: 2px;
-}
-
-.zLPzwH {
-    width: 4.75rem;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.PHZLSD {
-    margin-left: .8125rem;
-}
-
-.W4jGm6 {
-    width: 4.25rem;
-    height: 1rem;
-    margin-bottom: .5rem;
-    padding: .25rem;
-    background-color: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
-    border-radius: 2px;
-    justify-content: center;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-}
-
-
-
-.Final69 {
-    font-size: .75rem;
-    color: rgba(0,0,0,.65);
-    padding: 2.625rem 0 2.3125rem;
-    background: #f5f5f5;
-    background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-repeat-x: initial;
-    background-repeat-y: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: rgb(245, 245, 245);
-}
-
-    .W4jGm6:last-child {
-        margin-bottom: 0;
-    }
-
-    .W4jGm6 img {
-        max-height: 100%;
-        max-width: 100%;
-    }
-
-.rGOyzF {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-    .rGOyzF:hover {
-        cursor: pointer;
-    }
-
-.tiIrfQ {
-    width: 5.25rem;
-    margin-top: 2rem;
-}
-
-.pkg67p, .W4jGm6 {
-    display: flex;
-}
-
-.pkg67p {
-    flex-direction: row;
-}
-
-
-
-.pkg67p {
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.pkg67p:hover {
-        cursor: pointer;
-    }
-
 
 .opacity-50 {
     opacity: 0.5;
