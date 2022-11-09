@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-theme="black">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,18 +8,23 @@
     <title>@ViewBag.Title</title>
 
     <script src="https://kit.fontawesome.com/34bc6c9717.js" crossorigin="anonymous"></script>
-    @Styles.Render("~/Content/css/base.css")
+    @*@Styles.Render("~/Content/css/base.css")*@
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.33.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen w-screen overflow-x-hidden !bg-gray-100">
+<body class="flex flex-col min-h-screen w-screen overflow-x-hidden !bg-gray-100">
     @Html.Partial("Components/Navbar")
 
-    <main class="pt-28 pb-5">
+    <main class="pt-28 pb-5 flex-auto flex flex-col">
         @RenderBody()
     </main>
 
     @Html.Partial("Components/Footer")
 
+    @RenderSection("model", false)
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("script", false)
 </body>
 </html>

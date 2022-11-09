@@ -6,14 +6,17 @@
     <title>Shopee - @ViewBag.Title</title>
 
     <script src="https://kit.fontawesome.com/34bc6c9717.js" crossorigin="anonymous"></script>
-    @Styles.Render("~/Content/css/base.css")
+    @*@Styles.Render("~/Content/css/base.css")*@
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.33.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex min-h-screen w-screen flex-col overflow-x-hidden">
     <header class="h-20 flex-[0_1_auto] bg-white">
         <nav class="m-auto flex h-full max-w-screen-xl items-center justify-between py-2 px-1 text-[#ee4d2d]">
             <div class="flex h-full items-center gap-5">
                 <a class="text-3xl font-medium" href="/">Shopee</a>
-                <span class="text-xl font-medium text-black">Đăng Kí</span>
+                <span class="text-xl font-medium text-black">@ViewBag.Title</span>
             </div>
             <div>
                 <a href="/">Bạn cần giúp đỡ?</a>
@@ -21,19 +24,17 @@
         </nav>
     </header>
 
-    <main class="flex-[1_1_auto] bg-[#ee4d2d]">
-        <section class="m-auto flex h-[600px] max-w-screen-lg items-center justify-end"
+    <main class="flex-[1_1_auto] bg-[#ee4d2d]" style="display: flex; ">
+        <section class="m-auto flex max-w-screen-lg items-center justify-end"
                  style="
                     background-image: url('https://cf.shopee.vn/file/5569eb9dc7e09e2dbed5315b8f2ea8ba');
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center center;
+                    width: 100%;
+                    min-height: 600px;
                 ">
-            <form class="flex w-[25rem] flex-col gap-5 rounded-md bg-white p-5 text-lg font-medium text-black">
-                <label>@ViewBag.Title</label>
-
-                @RenderBody()
-            </form>
+            @RenderBody()
         </section>
     </main>
 

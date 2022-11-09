@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace DeAnNhom
@@ -12,6 +8,18 @@ namespace DeAnNhom
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Product",
+                url: "Product/{action}/{name}",
+                defaults: new { controller = "Product", action = "Index", name = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Account",
+                url: "Account/{action}/{name}",
+                defaults: new { controller = "Account", action = "Index", name = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",
