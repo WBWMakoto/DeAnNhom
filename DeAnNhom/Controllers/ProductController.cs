@@ -170,10 +170,13 @@ namespace DeAnNhom.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Manage()
+        public ActionResult Manage(int? page)
         {
+            int PageNum = page ?? 1;
+            int PageSize = 10;
+
             string userID = User.Identity.GetUserId();
-            var list = db.Products.Where(p => p.SellerID == userID).ToList();
+            var list = db.Products.Where(p => p.SellerID == userID).ToList().ToPagedList(PageNum, PageSize);
 
             return View(list);
         }
