@@ -19,92 +19,92 @@
     enctype = "multipart/form-data"
 }))
 {
-@Html.AntiForgeryToken()
-<input name="SellerID" id="SellerID" value="@currentUser.Id" class="hidden" />
+    @Html.AntiForgeryToken()
+    <input name="SellerID" id="SellerID" value="@currentUser.Id" class="hidden" />
 
-<section class="mt-5 p-4 text-black bg-white rounded-md shadow-lg flex gap-10">
-    <div id="productImg" class="overflow-hidden h-max">
-        <input type="file" id="UploadImg" name="UploadImg" onchange="changeImg(this)" class="hidden" />
-        <button type="button" class="flex items-center justify-center w-[450px] h-[450px]" id="UploadImgBtn">
-            <img src="https://via.placeholder.com/450" loading="lazy" height="450" width="450" id="UploadImgHolder" class="object-contain rounded-md" />
-        </button>
-    </div>
+    <section class="mt-5 p-4 text-black bg-white rounded-md shadow-lg flex gap-10">
+        <div id="productImg" class="overflow-hidden h-max">
+            <input type="file" id="UploadImg" name="UploadImg" onchange="changeImg(this)" class="hidden" />
+            <button type="button" class="flex items-center justify-center w-[450px] h-[450px]" id="UploadImgBtn">
+                <img src="https://via.placeholder.com/450" loading="lazy" height="450" width="450" id="UploadImgHolder" class="object-contain rounded-md" />
+            </button>
+        </div>
 
-    <div id="productInfo" class="min-h-[450px] flex-1 pr-4">
-        <div class="flex flex-col justify-between gap-3 h-full">
-            <div class="flex flex-col gap-5 w-full h-full">
-                @Html.TextBoxFor(m => m.ProductName, new { @class = "w-full py-2 px-3 border rounded-md focus:outline-none", placeholder = "Nhập tên sản phẩm" })
+        <div id="productInfo" class="min-h-[450px] flex-1 pr-4">
+            <div class="flex flex-col justify-between gap-3 h-full">
+                <div class="flex flex-col gap-5 w-full h-full">
+                    @Html.TextBoxFor(m => m.ProductName, new { @class = "w-full py-2 px-3 border rounded-md focus:outline-none", placeholder = "Nhập tên sản phẩm" })
 
-                <span class="relative text-[#f7442e] bg-[#fafafa] px-5">
-                    <span class="absolute top-0 text-xl underline">đ</span>
-                    @Html.EditorFor(m => m.ProductPrice, new
-                    {
-                       htmlAttributes = new
-                       {
-                            @class = "w-[200px] align-top text-4xl pl-4 rounded-md focus:outline-none placeholder:text-[#f7442e]",
-                            @min = "0",
-                            @step = "any",
-                            @type = "text",
-                            placeholder = "Nhập giá"                           
-                       }
-                   })
-                </span>
+                    <span class="relative text-[#f7442e] bg-[#fafafa] px-5">
+                        <span class="absolute top-0 text-xl underline">đ</span>
+                        @Html.EditorFor(m => m.ProductPrice, new
+                        {
+                           htmlAttributes = new
+                           {
+                                @class = "w-[200px] align-top text-4xl pl-4 rounded-md focus:outline-none placeholder:text-[#f7442e]",
+                                @min = "0",
+                                @step = "any",
+                                @type = "text",
+                                placeholder = "Nhập giá"
+                           }
+                       })
+                    </span>
 
-                <div class="px-5 text-gray-500 min-h-[50px] flex">
-                    @Html.LabelFor(m => m.CategoryID, new { @class = "w-[120px] block" })
-                    <div class="flex items-start justify-start flex-col w-full gap-3">
-                        @{ Html.RenderAction("SelectCate"); }
-                    </div>
-                </div>
-
-                <div class="px-5 text-gray-500 min-h-[50px] flex">
-                    @Html.LabelFor(m => m.ProductSizes, new { @class = "w-[120px] block" })
-                    <div class="flex items-start justify-start flex-col w-full gap-3">
-                        @Html.TextBoxFor(m => m.ProductSizes, null, new { @class = "hidden" })
-                        <ul id="productSize" class="text-black flex items-center justify-start gap-x-2 gap-y-3 min-h-[30px] flex-wrap">
-                            <li>
-                                <input type="text" class="focus:outline-none w-[100px] h-max border rounded-md border-gray-300 px-2 py-1 text-center" id="inputSize" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="px-5 text-gray-500 min-h-[50px] flex">
-                    @Html.LabelFor(m => m.Quantity, new { @class = "w-[120px] block" })
-                    <div>
-                        <div class="border border-gray-300 flex items-center justify-center">
-                            <button onclick="decreaseAmount()" type="button" class="text-center w-8 h-8 border-r-[1px] border-gray-300"> <i class="fa-solid fa-minus"></i> </button>
-                            @Html.TextBoxFor(m => m.Quantity, null, new { @class = "w-[60px] h-8 focus:outline-none text-center", @Value = 1 })
-                            <button onclick="increaseAmount()" type="button" class="text-center w-8 h-8 border-l-[1px] border-gray-300"> <i class="fa-solid fa-plus"></i> </button>
+                    <div class="px-5 text-gray-500 min-h-[50px] flex">
+                        @Html.LabelFor(m => m.CategoryID, new { @class = "w-[120px] block" })
+                        <div class="flex items-start justify-start flex-col w-full gap-3">
+                            @{ Html.RenderAction("SelectCate"); }
                         </div>
                     </div>
-                </div>
 
-                @Html.ValidationSummary("", new { @class = "[&_ul]:list-disc text-red-500" })
-            </div>
-            <div>
-                <button type="submit" class="bg-[#f05d40] text-white py-3 px-4 rounded-md">
-                    Tạo sản phẩm
-                </button>
+                    <div class="px-5 text-gray-500 min-h-[50px] flex">
+                        @Html.LabelFor(m => m.ProductSizes, new { @class = "w-[120px] block" })
+                        <div class="flex items-start justify-start flex-col w-full gap-3">
+                            @Html.TextBoxFor(m => m.ProductSizes, null, new { @class = "hidden" })
+                            <ul id="productSize" class="text-black flex items-center justify-start gap-x-2 gap-y-3 min-h-[30px] flex-wrap">
+                                <li>
+                                    <input type="text" class="focus:outline-none w-[100px] h-max border rounded-md border-gray-300 px-2 py-1 text-center" id="inputSize" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-5 text-gray-500 min-h-[50px] flex">
+                        @Html.LabelFor(m => m.Quantity, new { @class = "w-[120px] block" })
+                        <div>
+                            <div class="border border-gray-300 flex items-center justify-center">
+                                <button onclick="decreaseAmount()" type="button" class="text-center w-8 h-8 border-r-[1px] border-gray-300"> <i class="fa-solid fa-minus"></i> </button>
+                                @Html.TextBoxFor(m => m.Quantity, null, new { @class = "w-[60px] h-8 focus:outline-none text-center", @Value = 1 })
+                                <button onclick="increaseAmount()" type="button" class="text-center w-8 h-8 border-l-[1px] border-gray-300"> <i class="fa-solid fa-plus"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    @Html.ValidationSummary("", new { @class = "[&_ul]:list-disc text-red-500" })
+                </div>
+                <div>
+                    <button type="submit" class="bg-[#f05d40] text-white py-3 px-4 rounded-md">
+                        Tạo sản phẩm
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="p-4 text-black bg-white rounded-md shadow-lg">
-    <div class="w-full bg-[#fafafa] pb-6">
-        @Html.LabelFor(m => m.ProductDescription, new { @class = "text-2xl" })
-    </div>
-    <div class="w-full">
-        @Html.EditorFor(m => m.ProductDescription, new
-        {
-            htmlAttributes = new
+    <section class="p-4 text-black bg-white rounded-md shadow-lg">
+        <div class="w-full bg-[#fafafa] pb-6">
+            @Html.LabelFor(m => m.ProductDescription, new { @class = "text-2xl" })
+        </div>
+        <div class="w-full">
+            @Html.EditorFor(m => m.ProductDescription, new
             {
-                @class = "w-full border border-gray-300 focus:outline-none py-2 px-3 rounded-md h-4 resize-none"
-            }
-        })
-    </div>
-</section>
+                htmlAttributes = new
+                {
+                    @class = "w-full border border-gray-300 focus:outline-none py-2 px-3 rounded-md h-4 resize-none"
+                }
+            })
+        </div>
+    </section>
 }
 
 @section script
