@@ -46,7 +46,7 @@
                     <ul class="flex gap-2">
                         @if (Request.IsAuthenticated && isSeller)
                         {
-                        <li><a href="@Url.Action("Create", "Product")" class="hover:text-[#fbc797]"> Kênh Người Bán </a></li>
+                        <li><a href="@Url.Action("Manage", "Product")" class="hover:text-[#fbc797]"> Kênh Người Bán </a></li>
                         }
                         else
                         {
@@ -113,7 +113,7 @@
             <nav id="bottom-nav" class="flex justify-between items-center text-sm m-auto h-full max-w-screen-xl py-2 px-1">
                 <div>
                     <a href="/" class="flex gap-3 h-full items-center justify-center text-4xl">
-                        Shopee
+                        Shoppy
                         <span class="h-[50%] flex items-center text-xl border-l-[1px] border-l-[#ee4d2d] pl-3"> Giỏ hàng </span>
                     </a>
                 </div>
