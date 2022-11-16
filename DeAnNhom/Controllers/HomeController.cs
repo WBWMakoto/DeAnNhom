@@ -1,4 +1,8 @@
+using System;
+using System.Linq;
 using System.Web.Mvc;
+
+using DeAnNhom.Models;
 
 namespace DeAnNhom.Controllers
 {
