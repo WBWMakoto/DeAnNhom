@@ -37,7 +37,10 @@
                     else if (ViewBag.Update == "Password")
                     {
                         @Html.LabelFor(m => m.NewPassword, new { })
-                        @Html.TextBoxFor(m => m.NewPassword, new { @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none" })
+                        @Html.PasswordFor(m => m.NewPassword, new { 
+                            @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none", 
+                            type = "password"
+                        })
                     }
 
                 </section>
@@ -45,12 +48,12 @@
                 <section class="flex flex-col gap-5">
                     <div class="flex items-center justify-between">
                         @Html.LabelFor(m => m.CurrentPassword, new { })
-                        @Html.TextBoxFor(m => m.CurrentPassword, new { @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none" })
+                        @Html.PasswordFor(m => m.CurrentPassword, new { @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none" })
                     </div>
 
                     <div class="flex items-center justify-between">
                         @Html.LabelFor(m => m.ConfirmPassword, new { })
-                        @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "w-96 border border-[#f7422e] rounded-md px-4 py-2 focus:outline-none" })
                     </div>
 
                     <div class="flex items-center justify-between">

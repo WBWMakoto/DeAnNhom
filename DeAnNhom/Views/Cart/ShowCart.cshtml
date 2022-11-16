@@ -98,7 +98,7 @@
                 <span> Tổng thanh toán (@Model.Items.Count() Sản phẩm): </span>
                 <span class="text-[#ee4d2d] text-2xl font-semibold"> @FormatPrice(Model.TotalMoney()) </span>
             </div>
-            <a class="bg-[#ee4d2d] text-center w-[200px] py-2 text-white" href="@Url.Action("Checkout")">
+            <a class="bg-[#ee4d2d] text-center w-[200px] py-2 text-white rounded-md shadow-lg" href="@Url.Action("Checkout")">
                 Mua hàng
             </a>
         </section>
