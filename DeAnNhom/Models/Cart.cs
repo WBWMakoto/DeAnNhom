@@ -21,7 +21,8 @@ namespace DeAnNhom.Models
 
         public void AddProductToCart(Product _pro, string _sizes, int _quan)
         {
-            var item = Items.FirstOrDefault(s => s._product.ProductID == _pro.ProductID && s._product.Sizes == _sizes);
+            var item = Items.FirstOrDefault(s => s._product.ProductID == _pro.ProductID && s._sizes == _sizes);
+
             if (item == null)
             {
                 _quan = _quan <= _pro.Quantity ? _quan : 1;
