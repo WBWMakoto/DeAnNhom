@@ -74,7 +74,7 @@
                         <a href="@Url.Action("Edit", new { name = item.ProductID })" class="bg-[#ee4d2d] text-center rounded-md px-5 py-1 text-white">
                             <i class="fa-solid fa-gears"></i> Sửa
                         </a>
-                        <label for="my-modal-4" id="openModel" class="bg-[#ee4d2d] text-center rounded-md px-5 py-1 text-white triggerBtn" data-productID="@item.ProductID" data-productName="@item.ProductName">
+                        <label for="my-modal-4" id="openModel" class="bg-[#ee4d2d] text-center rounded-md px-5 py-1 text-white cursor-pointer triggerBtn" data-productID="@item.ProductID" data-productName="@item.ProductName">
                             <i class="fa-solid fa-trash"></i> Xóa
                         </label>
                     </div>
@@ -86,7 +86,9 @@
             <div class="col-span-8 flex-1 text-center flex flex-col items-center justify-center">
                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/cart/9bdd8040b334d31946f49e36beaf32db.png"
                      class="h-[150px] w-[150px] " loading="lazy" />
-                Bạn chưa có sản phẩm nào. <a href="@Url.Action("Create")" class="text-blue-600"> Tạo sản phẩm.</a>
+                <span>
+                    Bạn chưa có sản phẩm nào. <a href="@Url.Action("Create")" class="text-blue-600"> Tạo sản phẩm.</a>
+                </span>
             </div>
         }
     </section>

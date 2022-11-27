@@ -93,7 +93,7 @@ namespace DeAnNhom.Controllers
                     db.SaveChangesAsync()
                 );
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile", "Account");
             }
             return RedirectToAction("Unauthorization", "Errors");
         }

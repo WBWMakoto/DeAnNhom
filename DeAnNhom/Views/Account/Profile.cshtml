@@ -66,7 +66,7 @@
                     @Html.LabelFor(m => m.Email, new { @class = "w-[140px] text-right" })
                     <div class="w-full py-1">
                         <span> @userEmail </span>
-                        <button class="text-blue-600 underline" type="button"> Thay đổi </button>
+                        <a class="text-blue-600 underline" href="@Url.Action("Update", new { name = "Email" })"> Thay đổi </a>
                     </div>
                 </div>
 
@@ -75,14 +75,14 @@
                     <div class="w-full py-1">
                         @if (currentUser.PhoneNumber == null)
                             {
-                        <button class="text-blue-600 underline" type="button">
-                            Thêm số điện thoại mới
-                        </button>
+                                <a class="text-blue-600 underline" href="@Url.Action("Update", new { name = "Phone" })">
+                                    Thêm số điện thoại mới
+                                </a>
                             }
                             else
                             {
-                        <span> @userPhone </span>
-                        <button class="text-blue-600 underline" type="button"> Thay đổi </button>
+                                <span> @currentUser.PhoneNumber </span>
+                                <a class="text-blue-600 underline" href="@Url.Action("Update", new { name = "Phone" })"> Thay đổi </a>
                             }
                     </div>
                 </div>
