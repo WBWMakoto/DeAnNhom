@@ -144,14 +144,7 @@ namespace DeAnNhom.Controllers
         public ActionResult GenRandomProduct(int? quantity)
         {
             int Quantity = quantity ?? 200;
-
             Random rnd = new Random();
-            Category c = new Category
-            {
-                CategoryID = "Test2",
-                CategoryName = "Test2"
-            };
-            db.Categories.Add(c);
 
             for (int i = 0; i < Quantity; i++)
             {
@@ -165,7 +158,7 @@ namespace DeAnNhom.Controllers
                     SellerID = UserManager.FindById(User.Identity.GetUserId()).Id,
                     ProductImage = $"~/Content/Images/Product/{rnd.Next(1, 8)}.jpg",
                     CreatedAt = DateTime.Now,
-                    CategoryID = c.CategoryID,
+                    CategoryID = "Test",
                 };
                 db.Products.Add(p);
             }

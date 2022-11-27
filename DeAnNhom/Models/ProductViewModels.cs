@@ -59,4 +59,14 @@ namespace DeAnNhom.Models
         public PagedList.IPagedList<Product> PageProduct { get; set; }
         public List<Product> ListProduct { get; set; }
     }
+
+    public class CreateCategoryViewModel
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Thiếu tên danh mục")]
+        [Display(Name = "Tên danh mục")]
+        public string CategoryName { get; set; }
+
+        [Required(ErrorMessage = "Thiếu ảnh danh mục")]
+        public HttpPostedFileBase CategoryImage { get; set; }
+    }
 }

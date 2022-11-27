@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryID" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryImage" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -325,6 +326,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
@@ -660,6 +662,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

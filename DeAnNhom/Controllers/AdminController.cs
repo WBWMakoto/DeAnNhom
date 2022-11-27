@@ -2,13 +2,13 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace DeAnNhom.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -72,14 +72,7 @@ namespace DeAnNhom.Controllers
             }
         }
 
-        // GET: Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [Authorize(Roles = "Customer")]
-        [OverrideAuthentication]
         public async Task<ActionResult> BecomeAdmin()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -98,22 +91,38 @@ namespace DeAnNhom.Controllers
             return RedirectToAction("Unauthorization", "Errors");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateCategory()
         {
-            Category cate = new Category();
-            return View(cate);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCategory(Category cate)
+        public ActionResult CreateCategory(CreateCategoryViewModel model)
         {
-            db.Categories.Add(cate);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                string fileName = model.CategoryName.Replace(' ', '-');
+                string extent = Path.GetExtension(model.CategoryImage.FileName);
+                fileName += extent;
 
-            ViewBag.IsSuccess = true;
+                model.CategoryImage.SaveAs(Path.Combine(Server.MapPath("~/Content/Images/Category"), fileName));
 
-            return View(new Category());
+                var cate = new Category
+                {
+                    CategoryID = model.CategoryName,
+                    CategoryName = model.CategoryName,
+                    CategoryImage = $"~/Content/Images/Category/{fileName}"
+                };
+                db.Categories.Add(cate);
+                db.SaveChanges();
+
+                ViewBag.IsSuccess = true;
+
+                return View();
+            }
+            return View();
         }
     }
 }

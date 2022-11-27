@@ -315,6 +315,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Category\" />
     <Folder Include="Content\Images\Product\" />
     <Folder Include="Content\Images\User\" />
   </ItemGroup>
