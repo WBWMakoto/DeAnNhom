@@ -149,7 +149,8 @@
                 @Html.AntiForgeryToken()
                 <input value="@Model.product.ProductID" class="hidden" name="productID" id="productID" />
                 <h3 class="text-5xl text-red-600"> Cảnh báo </h3>
-                <p class="text-xl">
+                <p class="text-xl overflow-hidden h-full"
+                   style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical">
                     Bạn có chắc bạn muốn xóa sản phẩm @Model.product.ProductName
                 </p>
                 <div class="w-full flex items-center justify-end">
