@@ -164,8 +164,14 @@
         });
 
         const decreaseAmount = () => {
-            $("#Quantity")[0].value = (+$("#Quantity")[0].value) - 1;
-        }
+            let newValue = (+$("#Quantity")[0].value) - 1;
+
+            if (newValue <= 0) {
+                newValue = 1;
+            }
+
+            $("#Quantity")[0].value = newValue;
+            }
 
         const increaseAmount = () => {
             $("#Quantity")[0].value = (+$("#Quantity")[0].value) + 1;

@@ -110,7 +110,7 @@ namespace DeAnNhom.Controllers
                 Product p = new Product
                 {
                     Quantity = model.Quantity,
-                    Price = model.ProductPrice,
+                    Price = model.ProductPrice > 0 ? model.ProductPrice : -model.ProductPrice,
                     ProductName = model.ProductName,
                     Decription = model.ProductDescription,
                     Sizes = model.ProductSizes,
@@ -222,19 +222,23 @@ namespace DeAnNhom.Controllers
             int ProductID = Convert.ToInt32(form["ProductID"]);
             string UserID = User.Identity.GetUserId();
 
-            try
+            var product = db.Products.Where(p => p.ProductID == ProductID && p.SellerID == UserID).FirstOrDefault();
+
+            if (product == null)
             {
-                Product p = db.Products.Where(_p => _p.ProductID == ProductID && _p.SellerID == UserID).FirstOrDefault();
-
-                db.Products.Remove(p);
-                await db.SaveChangesAsync();
-
                 return RedirectToAction("Manage");
             }
-            catch
+
+            var orderDetails = db.OrderDetails.Where(od => od.ProductID == product.ProductID).ToList();
+            foreach (var order in orderDetails)
             {
-                return Content("Error");
+                db.OrderDetails.Remove(order);
             }
+
+            db.Products.Remove(product);
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Manage");
         }
 
         #region Partial Views
