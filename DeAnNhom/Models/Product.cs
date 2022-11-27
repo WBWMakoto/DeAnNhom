@@ -28,6 +28,7 @@ namespace DeAnNhom.Models
         public int Quantity { get; set; }
         public string ProductImage { get; set; }
         public int Sold { get; set; }
+        public System.DateTime CreatedAt { get; set; }
         public string CategoryID { get; set; }
         public string SellerID { get; set; }
     

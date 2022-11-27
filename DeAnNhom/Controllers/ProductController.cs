@@ -65,7 +65,9 @@ namespace DeAnNhom.Controllers
                 list = list.Where(p => p.ProductName.Contains(name));
             }
 
-            return View(list.OrderBy(p => p.ProductID).ToPagedList(PageNum, PageSize));
+            list = list.OrderBy(p => p.ProductID);
+
+            return View(new ProductPage { PageProduct = list.ToPagedList(PageNum, PageSize), ListProduct = list.ToList() });
         }
 
         [AllowAnonymous]
@@ -114,6 +116,7 @@ namespace DeAnNhom.Controllers
                     Sizes = model.ProductSizes,
                     SellerID = model.SellerID,
                     CategoryID = model.CategoryID,
+                    CreatedAt = DateTime.Now
                 };
                 db.Products.Add(p);
 
@@ -143,12 +146,12 @@ namespace DeAnNhom.Controllers
             int Quantity = quantity ?? 200;
 
             Random rnd = new Random();
-            //Category c = new Category
-            //{
-            //    CategoryID = "Test3",
-            //    CategoryName = "Test3"
-            //};
-            //db.Categories.Add(c);
+            Category c = new Category
+            {
+                CategoryID = "Test2",
+                CategoryName = "Test2"
+            };
+            db.Categories.Add(c);
 
             for (int i = 0; i < Quantity; i++)
             {
@@ -161,7 +164,8 @@ namespace DeAnNhom.Controllers
                     Sizes = "S;M;L;XL;XXL",
                     SellerID = UserManager.FindById(User.Identity.GetUserId()).Id,
                     ProductImage = $"~/Content/Images/Product/{rnd.Next(1, 8)}.jpg",
-                    CategoryID = "Test2",
+                    CreatedAt = DateTime.Now,
+                    CategoryID = c.CategoryID,
                 };
                 db.Products.Add(p);
             }
@@ -183,7 +187,14 @@ namespace DeAnNhom.Controllers
 
         public ActionResult Edit(int name)
         {
-            return View();
+            var product = db.Products.Where(p => p.ProductID == name).FirstOrDefault();
+
+            if (product == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(product);
         }
 
         // POST: Product/Edit

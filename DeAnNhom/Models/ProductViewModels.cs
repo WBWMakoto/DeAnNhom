@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 
@@ -51,5 +52,11 @@ namespace DeAnNhom.Models
         [Required(ErrorMessage = "Thiếu size sản phẩm")]
         [Display(Name = "Size")]
         public string Size { get; set; }
+    }
+
+    public class ProductPage
+    {
+        public PagedList.IPagedList<Product> PageProduct { get; set; }
+        public List<Product> ListProduct { get; set; }
     }
 }
