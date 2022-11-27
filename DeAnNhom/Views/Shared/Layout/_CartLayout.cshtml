@@ -29,13 +29,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewBag.Title</title>
+    <title>Shoppy - @ViewBag.Title</title>
 
     <script src="https://kit.fontawesome.com/34bc6c9717.js" crossorigin="anonymous"></script>
-    @*@Styles.Render("~/Content/css/base.css")*@
-
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.33.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    @Styles.Render("~/Content/css/base.css")
 </head>
 
 <body class="flex flex-col min-h-screen w-screen overflow-x-hidden !bg-gray-100">
@@ -46,11 +43,11 @@
                     <ul class="flex gap-2">
                         @if (Request.IsAuthenticated && isSeller)
                         {
-                        <li><a href="@Url.Action("Manage", "Product")" class="hover:text-[#fbc797]"> Kênh Người Bán </a></li>
+                            <li><a href="@Url.Action("Manage", "Product")" class="hover:text-[#fbc797]"> Kênh Người Bán </a></li>
                         }
                         else
                         {
-                        <li> <a href="@Url.Action("BecomeSeller", "Account")" class="hover:text-[#fbc797]"> Trở thành Người bán Shoppy </a> </li>
+                            <li> <a href="@Url.Action("BecomeSeller", "Account")" class="hover:text-[#fbc797]"> Trở thành Người bán Shoppy </a> </li>
                         }
                         <li class="border-l-2 border-gray-300/60 pl-2">
                             <a href="#" class="hover:text-[#fbc797]"> Tải ứng dụng </a>
@@ -88,21 +85,21 @@
 
                         @if (Request.IsAuthenticated)
                         {
-                        <li>
-                            <a href="@Url.Action("Profile", "Account")" title="Manage" class="flex items-center justify-center gap-1">
-                                <img class="w-6 h-6 rounded-full" src="@Url.Content(currentUser.ProfileImg)" />
-                                <span class="text-md"> @currentUser.Customer.Name </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="@Url.Action("Profile", "Account")" title="Manage" class="flex items-center justify-center gap-1">
+                                    <img class="w-6 h-6 rounded-full" src="@Url.Content(currentUser.ProfileImg)" />
+                                    <span class="text-md"> @currentUser.Customer.Name </span>
+                                </a>
+                            </li>
                         }
                         else
                         {
-                        <li>
-                            <div class="flex gap-2">
-                                @Html.ActionLink("Đăng Ký", "Register", "Account")
-                                @Html.ActionLink("Đăng Nhập", "Login", "Account", null, new { @class = "border-l-[1px] border-gray-300/60 pl-2" })
-                            </div>
-                        </li>
+                            <li>
+                                <div class="flex gap-2">
+                                    @Html.ActionLink("Đăng Ký", "Register", "Account")
+                                    @Html.ActionLink("Đăng Nhập", "Login", "Account", null, new { @class = "border-l-[1px] border-gray-300/60 pl-2" })
+                                </div>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -120,10 +117,10 @@
                 <div class="w-[50%] h-max text-white rounded-md border-2 border-transparent p-1 focus-within:border-black">
                     @using (Html.BeginForm("Index", "Product", FormMethod.Get, new { @class = "flex w-full gap-2 rounded-md bg-white border-2 border-[#ee4d2d]" }))
                     {
-                    <input type="text" class="w-full h-[40px] text-black p-1 pl-4 rounded-l-md focus:outline-none" placeholder="Type something to search" />
-                    <button class="bg-[#fb5533] py-1 px-8">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+                        <input type="text" class="w-full h-[40px] text-black p-1 pl-4 rounded-l-md focus:outline-none" placeholder="Type something to search" />
+                        <button class="bg-[#fb5533] py-1 px-8">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     }
                 </div>
             </nav>
